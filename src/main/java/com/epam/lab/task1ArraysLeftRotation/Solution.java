@@ -1,10 +1,6 @@
-package com.epam.lab.Task1ArraysLeftRotation;
+package com.epam.lab.task1ArraysLeftRotation;
 
-import java.io.*;
 import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
 
 public class Solution {
 
