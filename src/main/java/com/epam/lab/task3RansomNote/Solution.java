@@ -40,11 +40,7 @@ public class Solution {
         Map<String, Integer> dictionary = new HashMap<>();
 
         for (String word : words) {
-            if (dictionary.containsKey(word)) {
-                dictionary.replace(word, dictionary.get(word) + 1);
-            } else {
-                dictionary.put(word, 1);
-            }
+            dictionary.merge(word, 1, (a, b) -> a + b);
         }
 
         return dictionary;
