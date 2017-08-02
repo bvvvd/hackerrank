@@ -1,10 +1,6 @@
 package com.epam.lab.task17DFS;
 
-import java.io.*;
 import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
 
 public class Solution {
 
@@ -38,12 +34,7 @@ public class Solution {
     }
 
     private static int getRegionSize(int[][] matrix, int i, int j) {
-        if (i < 0 || j < 0 || i >= matrix.length || j >= matrix[i].length) {
-            return 0;
-        }
-        if (matrix[i][j] == 0) {
-            return 0;
-        }
+        if (elementIsOutsideBounds(matrix, i, j)) return 0;
 
         matrix[i][j] = 0;
 
@@ -58,5 +49,9 @@ public class Solution {
         }
 
         return sizeOfRegion;
+    }
+
+    private static boolean elementIsOutsideBounds(int[][] matrix, int i, int j) {
+        return i < 0 || j < 0 || i >= matrix.length || j >= matrix[i].length || matrix[i][j] == 0;
     }
 }
