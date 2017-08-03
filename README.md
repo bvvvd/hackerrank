@@ -27,7 +27,7 @@
 
 [Binary Search: Ice Cream Parlor](https://github.com/bvvvd/hackerrank/blob/master/src/main/java/com/epam/lab/task15BinarySearch/Solution.java)
 
-[Time Coplexity: Primality](https://github.com/bvvvd/hackerrank/blob/master/src/main/java/com/epam/lab/task14Primality/Solution.java)
+[Time Complexity: Primality](https://github.com/bvvvd/hackerrank/blob/master/src/main/java/com/epam/lab/task14Primality/Solution.java)
 
 [Recursion: Fibonacci Numbers](https://github.com/bvvvd/hackerrank/blob/master/src/main/java/com/epam/lab/task9Fibonacci/Solution.java)
 

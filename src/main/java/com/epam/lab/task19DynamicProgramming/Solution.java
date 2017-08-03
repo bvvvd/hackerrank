@@ -39,16 +39,10 @@ public class Solution {
     }
 
     private static boolean noCoins(int[] coins, int index) {
-        if (index >= coins.length) {
-            return true;
-        }
-        return false;
+        return index >= coins.length;
     }
 
     private static boolean noMoney(int money) {
-        if (money == 0) {
-            return true;
-        }
-        return false;
+        return money == 0;
     }
 }
