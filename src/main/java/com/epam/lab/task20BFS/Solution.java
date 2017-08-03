@@ -1,75 +1,109 @@
 package com.epam.lab.task20BFS;
 
-import java.io.*;
 import java.util.*;
 
 public class Solution {
 
+    private static final int EDGE_LENGTH = 6;
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-        int queries = scanner.nextInt();
+        int queries = sc.nextInt();
 
-        for(int t = 0; t < queries; t++) {
+        for (int i = 0; i < queries; i++) {
+            int nodeNumber = sc.nextInt();
+            int edgeNumber = sc.nextInt();
 
-            // Create a graph of size n where each edge weight is 6:
-            Graph graph = new Graph(scanner.nextInt());
-            int m = scanner.nextInt();
+            Node[] nodes = createNodes(nodeNumber);
 
-            // read and set edges
-            for(int i = 0; i < m; i++) {
-                int u = scanner.nextInt() - 1;
-                int v = scanner.nextInt() - 1;
+            connectNodes(nodes, edgeNumber, sc);
 
-                // add each edge to the graph
-                graph.get(u).add(v);
-                bfs.graph.get(v).add(u);
-            }
+            int startNode = sc.nextInt();
+            calculateDistances(nodes[startNode - 1]);
 
-            // Find shortest reach from node s
-            bfs.shortestReach(scanner.nextInt() - 1);
+            printResult(nodes, startNode);
         }
 
-        scanner.close();
+        sc.close();
     }
 
-    static class Graph {
-        private Node[] nodes;
-        private static int DISTANCE = 6;
+    private static void connectNodes(Node[] nodes, int numberOfEdges, Scanner sc) {
+        for (int i = 0; i < numberOfEdges; i++) {
+            int node1 = sc.nextInt();
+            int node2 = sc.nextInt();
 
-        public Graph(int size) {
+            nodes[node1 - 1].addConnectedNodes(nodes[node2 - 1]);
+        }
+    }
 
+    private static Node[] createNodes(int numberOfNodes) {
+        Node[] nodes = new Node[numberOfNodes];
+
+        for (int i = 0; i < nodes.length; i++) {
+            nodes[i] = new Node(i + 1);
         }
 
-        private class Node {
-            private Node getNode(int id) {
+        return nodes;
+    }
 
-            }
+    static void calculateDistances(Node startNode) {
+        LinkedList<Node> queue = new LinkedList<>();
 
-            public void addEdge(int first, int second) {
+        queue.add(startNode);
 
-            }
+        startNode.distance = 0;
 
-            public int[] reach(int startPoint) {
-                LinkedList<Integer> queue = new LinkedList<>();
-                queue.add(startPoint);
-                boolean[] visited = new boolean[nodes.length];
-                int[] distances = new int[nodes.length];
-                Arrays.fill(distances, -1);
-                distances[startPoint] = 0;
-
-                while (!queue.isEmpty()) {
-                    int node = queue.poll();
-                    for (int neighbor : nodes[node].neighbors) {
-                        if (distances[neighbor] == -1) {
-                            distances[neighbor] += DISTANCE;
-                            queue.add(neighbor);
-                        }
-                    }
+        while (!queue.isEmpty()) {
+            Node currentNode = queue.poll();
+            for (Node neighbor : currentNode.neighbors) {
+                if (neighbor.distance == -1){
+                    neighbor.distance = currentNode.distance + EDGE_LENGTH;
+                    queue.add(neighbor);
                 }
-                return distances;
             }
         }
     }
 
+    private static void printResult(Node[] nodes, int startNode) {
+        for (int i = 0; i < nodes.length; i++) {
+            if (startNode - 1 != i) {
+                System.out.format("%d ", nodes[i].distance);
+            }
+        }
+        System.out.println();
+    }
+
+    static class Node {
+
+        private int nodeName;
+        private Set<Node> neighbors;
+        int distance;
+
+        public Node(int nodeName) {
+            this.nodeName = nodeName;
+            neighbors = new HashSet<>();
+            distance = -1;
+        }
+
+        public void addConnectedNodes(Node node) {
+            neighbors.add(node);
+            node.neighbors.add(this);
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Node node = (Node) o;
+
+            return nodeName == node.nodeName;
+        }
+
+        @Override
+        public int hashCode() {
+            return nodeName;
+        }
+    }
 }
