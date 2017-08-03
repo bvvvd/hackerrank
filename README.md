@@ -34,3 +34,11 @@
 [Recursion: Davis' Staircase](https://github.com/bvvvd/hackerrank/blob/master/src/main/java/com/epam/lab/task12Recursion/Solution.java)
 
 [Bit Manipulation: Lonely Integer](https://github.com/bvvvd/hackerrank/blob/master/src/main/java/com/epam/lab/task10BitManipulation/Solution.java)
+
+[Merge Sort: Counting Inversions](https://github.com/bvvvd/hackerrank/blob/master/src/main/java/com/epam/lab/task18MergeSort/Solution.java)
+
+[DFS: Connected Sell In A Grid](https://github.com/bvvvd/hackerrank/blob/master/src/main/java/com/epam/lab/task17DFS/Solution.java)
+
+[BFS: Shortest Reach In Graph](https://github.com/bvvvd/hackerrank/blob/master/src/main/java/com/epam/lab/task20BFS/Solution.java)
+
+[DP: Coin Change](https://github.com/bvvvd/hackerrank/blob/master/src/main/java/com/epam/lab/task19DynamicProgramming/Solution.java)
