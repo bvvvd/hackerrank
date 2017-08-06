@@ -20,15 +20,10 @@ public class Solution {
     }
 
     private static int staircase(int number) {
-        if (number == 0) {
-            return 0;
+        if (number <= 2) {
+            return number;
         }
-        if (number == 1) {
-            return 1;
-        }
-        if (number == 2) {
-            return 2;
-        }
+
         if (number == 3) {
             return 4;
         }
@@ -37,6 +32,7 @@ public class Solution {
             int value = staircase(number - 1) + staircase(number - 2) + staircase(number - 3);
             map.put(number, value);
         }
+
         return map.get(number);
     }
 }
