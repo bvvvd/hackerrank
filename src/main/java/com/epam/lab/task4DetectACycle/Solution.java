@@ -1,8 +1,5 @@
 package com.epam.lab.task4DetectACycle;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Solution {
 
     class Node {
@@ -11,15 +8,18 @@ public class Solution {
     }
 
     boolean hasCycle(Node currentNode) {
-        Set<Node> nodes = new HashSet<>();
+        Node overtaker = currentNode.next;
+        Node leader = currentNode.next.next;
 
-        while (currentNode != null) {
-            if (!nodes.add(currentNode)) {
-                return true;
+        while (overtaker != leader) {
+            if (leader == null || overtaker == null) {
+                return false;
             }
-            currentNode = currentNode.next;
-        }
 
-        return false;
+            leader = leader.next.next;
+            overtaker = overtaker.next;
+        }
+        return true;
     }
+
 }
